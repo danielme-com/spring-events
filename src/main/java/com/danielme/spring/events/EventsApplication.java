@@ -1,26 +1,29 @@
 package com.danielme.spring.events;
 
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableAsync;
 
 import com.danielme.spring.events.services.DemoPublisherService;
 
-@Configuration
+@SpringBootApplication
 @EnableAsync
-@ComponentScan(basePackageClasses = EventsApplication.class)
-public class EventsApplication {
+public class EventsApplication implements CommandLineRunner{
 
+	@Autowired
+	DemoPublisherService service;
+	
     public static void main(String[] args) {
-        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(
-                EventsApplication.class);
-        DemoPublisherService demoPublisherService = applicationContext
-                .getBean(DemoPublisherService.class);
-
-        demoPublisherService.doSomething();
-
-        applicationContext.close();
+    	SpringApplication.run(EventsApplication.class, args);
     }
+
+	@Override
+	public void run(String... args) throws Exception {
+		// TODO Auto-generated method stub
+		service.doSomething();
+		
+	}
 
 }
