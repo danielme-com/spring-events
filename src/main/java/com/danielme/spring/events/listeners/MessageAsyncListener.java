@@ -11,12 +11,13 @@ import com.danielme.spring.events.model.MessageEvent;
 @Component
 public class MessageAsyncListener {
 
-    private static final Logger logger = LoggerFactory.getLogger(MessageAsyncListener.class);
+	private static final Logger logger = LoggerFactory.getLogger(MessageAsyncListener.class);
 
-    @EventListener
-    @Async
-    public void processMessageEvent(MessageEvent event) {
-        logger.info("Procesing event asynchronous, content = " + event.getMessage() + ", timestamp "
-                + event.getTimestamp());
-    }
+	@EventListener
+	@Async
+	public void listenAsyncMessageEvent(MessageEvent event) {
+		logger.info("Procesing event asynchronous, content = {} , timestamp {}", event.getMessage(),
+				event.getTimestamp());
+	}
+
 }

@@ -1,6 +1,5 @@
 package com.danielme.spring.events.services;
 
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationEventPublisher;
@@ -11,18 +10,19 @@ import com.danielme.spring.events.model.MessageEvent;
 @Service
 public class DemoPublisherService {
 
-    private static final Logger logger = LoggerFactory.getLogger(DemoPublisherService.class);
+	private static final Logger logger = LoggerFactory.getLogger(DemoPublisherService.class);
 
-    private final ApplicationEventPublisher publisher;
+	private final ApplicationEventPublisher publisher;
 
-    public DemoPublisherService(ApplicationEventPublisher publisher) {
-        this.publisher = publisher;
-    }
+	public DemoPublisherService(ApplicationEventPublisher publisher) {
+		this.publisher = publisher;
+	}
 
-    public void doSomething() {
-        logger.info("init doSomething method");
-        MessageEvent messageEvent = new MessageEvent(this, "Hello!!");
-        publisher.publishEvent(messageEvent);
-        logger.info("event was published");
-    }
+	public void doSomething() {
+		logger.info("init doSomething method");
+		MessageEvent messageEvent = new MessageEvent(this, "Hello!!");
+		publisher.publishEvent(messageEvent);
+		logger.info("event was published");
+	}
+
 }
