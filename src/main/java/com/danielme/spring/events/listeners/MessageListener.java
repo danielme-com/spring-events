@@ -13,7 +13,7 @@ public class MessageListener implements ApplicationListener<MessageEvent> {
     private static final Logger logger = LoggerFactory.getLogger(MessageListener.class);
 
     public void onApplicationEvent(MessageEvent event) {
-        logger.info("Event received, content = " + event.getMessage() + ", timestamp " + event.getTimestamp());
+        logger.info("Event received, content = {}, timestamp {}", event.getMessage(), event.getTimestamp());
     }
 
 }
